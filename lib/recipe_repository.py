@@ -11,3 +11,8 @@ class RecipeRepository:
             item = Recipe(row["id"], row["name"], row["avg_cooking_time"], row["rating"])
             recipes.append(item)
         return recipes
+    
+    def find(self, id):
+        rows = self._connection.execute('SELECT * FROM recipes WHERE id = %s', [id])
+        row = rows[0]
+        return Recipe(row["id"], row["name"], row["avg_cooking_time"], row["rating"])
