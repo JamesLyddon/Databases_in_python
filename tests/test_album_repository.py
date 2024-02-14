@@ -2,7 +2,7 @@ from lib.album_repository import AlbumRepository
 from lib.album import Album
 
 """
-When we call AlbumRepository#all
+When we call AlbumRepository.all()
 We get a list of Album objects reflecting the seed data.
 """
 def test_get_all_records(db_connection): # See conftest.py to learn what `db_connection` is.
@@ -26,3 +26,19 @@ def test_get_all_records(db_connection): # See conftest.py to learn what `db_con
         Album(11, "Fodder on My Wings", 1982, 4),
         Album(12, "Ring Ring", 1973, 2),
     ]
+
+"""
+When we call AlbumRepository.find(id)
+We get the specified Album object reflecting the id argument passed in
+"""
+def test_find_album_id(db_connection):
+    db_connection.seed("seeds/music_library.sql")
+    repository = AlbumRepository(db_connection)
+
+    album_5 = repository.find(5)
+    album_1 = repository.find(1)
+    album_9 = repository.find(9)
+
+    assert album_5 == Album(5, "Bossanova", 1990, 1)
+    assert album_1 == Album(1, "Doolittle", 1989, 1)
+    assert album_9 == Album(9, "Baltimore", 1978, 4)

@@ -7,7 +7,7 @@ class AlbumRepository:
 
     # Retrieve all albums
     def all(self):
-        rows = self._connection.execute('SELECT * from albums')
+        rows = self._connection.execute('SELECT * FROM albums')
         albums = []
         for row in rows:
             item = Album(row["id"], row["title"], row["release_year"], row["artist_id"])
@@ -16,6 +16,6 @@ class AlbumRepository:
     
     # Find a single album by its id
     def find(self, album_id):
-        rows = self._connection.execute('SELECT * from albums WHERE id = %s', [album_id])
+        rows = self._connection.execute('SELECT * FROM albums WHERE id = %s', [album_id])
         row = rows[0]
         return Album(row["id"], row["title"], row["release_year"], row["artist_id"])
