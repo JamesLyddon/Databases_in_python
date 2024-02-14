@@ -2,6 +2,10 @@ from lib.database_connection import DatabaseConnection
 from lib.artist_repository import ArtistRepository
 from lib.album_repository import AlbumRepository
 
+# Sequence Diagram
+# [MermaidChart: 73fb2cef-af64-47d5-a989-a9aab82f8b01]
+
+
 # Connect to the database
 connection = DatabaseConnection()
 connection.connect()
