@@ -21,12 +21,16 @@ artists = artist_repository.all()
 album_repository = AlbumRepository(connection)
 albums = album_repository.all()
 
-def list_artists():
+def list_all_artists():
     for artist in artists:
         print(artist)
 
-def list_albums():
+def list_all_albums():
     for album in albums:
         print(album)
 
-list_albums()
+def list_album_by_id(id):
+    album = album_repository.find(id)
+    print(album)
+
+list_album_by_id(2)
