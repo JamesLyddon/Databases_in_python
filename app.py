@@ -73,8 +73,6 @@ def get_post_by_id(id):
     post = post_repository.find(id)
     print(post)
 
-
-
 # list_all_users()
 # list_all_posts()
 # get_user_by_id(2)
